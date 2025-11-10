@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Validation Tab Test</title>
+</head>
+<body>
+    <h1>Validation Tab Test</h1>
+
+    <div id="tabs">
+        <button class="tab-button" onclick="switchTab('output')">Output</button>
+        <button class="tab-button" onclick="switchTab('validation')" id="validation-tab-button" style="display: none;">
+            🔍 Quality Report
+        </button>
+    </div>
+
+    <div id="tab-output" class="tab-content">
+        <h2>Output Tab</h2>
+        <button onclick="testValidation()">Test Show Validation Tab</button>
+    </div>
+
+    <div id="tab-validation" class="tab-content" style="display: none;">
+        <h2>🔍 Validation Tab</h2>
+        <p>This is the validation tab content!</p>
+        <div id="qualityScoreDisplay" style="font-size: 3rem; font-weight: bold;">87</div>
+        <div id="qualityBadgeDisplay" style="padding: 10px; background: #d4edda; color: #155724;">
+            🟢 High Quality
+        </div>
+    </div>
+
+    <script>
+        console.log('🧪 Test page loaded');
+
+        function switchTab(tabName) {
+            console.log('Switching to tab:', tabName);
+
+            // Hide all tabs
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.style.display = 'none';
+            });
+
+            // Show selected tab
+            const selectedTab = document.getElementById('tab-' + tabName);
+            if (selectedTab) {
+                selectedTab.style.display = 'block';
+                console.log('✅ Switched to', tabName);
+            } else {
+                console.error('❌ Tab not found:', 'tab-' + tabName);
+            }
+        }
+
+        function testValidation() {
+            console.log('🔍 Testing validation tab display...');
+
+            // 1. Show the tab button
+            const tabButton = document.getElementById('validation-tab-button');
+            console.log('Tab button found:', !!tabButton);
+
+            if (tabButton) {
+                tabButton.style.display = 'inline-block';
+                console.log('✅ Tab button displayed');
+            }
+
+            // 2. Switch to validation tab
+            switchTab('validation');
+
+            // 3. Populate some test data
+            const scoreDisplay = document.getElementById('qualityScoreDisplay');
+            const badgeDisplay = document.getElementById('qualityBadgeDisplay');
+
+            if (scoreDisplay) {
+                scoreDisplay.textContent = '87';
+                scoreDisplay.style.color = '#28a745';
+                console.log('✅ Score displayed');
+            }
+
+            if (badgeDisplay) {
+                badgeDisplay.textContent = '🟢 High Quality';
+                badgeDisplay.style.background = '#d4edda';
+                badgeDisplay.style.color = '#155724';
+                console.log('✅ Badge displayed');
+            }
+
+            console.log('🎉 Validation tab should now be visible!');
+        }
+
+        // Initialize
+        window.addEventListener('load', () => {
+            console.log('✅ Page initialized');
+            console.log('Tab button exists:', !!document.getElementById('validation-tab-button'));
+            console.log('Validation tab exists:', !!document.getElementById('tab-validation'));
+        });
+    </script>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .tab-button {
+            padding: 10px 20px;
+            margin: 5px;
+            border: 2px solid #ddd;
+            background: white;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .tab-button:hover {
+            background: #f0f0f0;
+        }
+        .tab-content {
+            border: 2px solid #ddd;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 5px;
+        }
+        button {
+            padding: 12px 24px;
+            background: #0066cc;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background: #0052a3;
+        }
+    </style>
+</body>
+</html>
