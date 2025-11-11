@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; connect-src https://generativelanguage.googleapis.com; img-src 'self' data:;">
-    <title>NeuroScribe V9 FIREWALL - Absolute Briefing Separation + BLACKLIST Filter + Enhanced Anti-Hallucination</title>
+    <title>NeuroScribe V10 PURE MODE - Zero Auto-Briefing + Pure SOAP Expand + Complete AI Separation</title>
     <style>
         * {
             margin: 0;
@@ -454,7 +454,7 @@
 <body>
     <div class="container">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
-            <h1 style="margin: 0;">🧠 NeuroScribe V9 FIREWALL - Professional Clinical Intelligence</h1>
+            <h1 style="margin: 0;">🧠 NeuroScribe V10 PURE MODE - Professional Clinical Intelligence</h1>
             <div style="display: flex; align-items: center; gap: 15px;">
                 <div id="apiKeyStatus" style="font-size: 0.85rem; color: #6b7280;"></div>
                 <button onclick="openSettings()" style="padding: 8px 16px; background: #4A90E2; color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 0.9rem; font-weight: 500;">
@@ -462,7 +462,7 @@
                 </button>
             </div>
         </div>
-        <div class="version">V9 FIREWALL: Absolute Briefing Separation | BLACKLIST Filter | Post-Generation Safety Net | 8-Layer Fabrication Prevention</div>
+        <div class="version">V10 PURE MODE: Zero Auto-Briefing | Pure SOAP Expand | Complete AI Separation | Medication Blacklist | User Control</div>
 
         <div id="status" class="status disconnected">
             🔑 Checking API key...
@@ -679,7 +679,6 @@
                         <label style="display: flex; align-items: center; cursor: pointer; font-size: 0.85rem;">
                             <input type="checkbox"
                                    id="autoDeepSearchToggle"
-                                   checked
                                    onchange="toggleAutoDeepSearch(this.checked)"
                                    style="margin-right: 8px; width: 16px; height: 16px; cursor: pointer;">
                             <span style="color: #334155;">
@@ -773,15 +772,15 @@
                     <label style="display: flex; align-items: flex-start; cursor: pointer; font-size: 0.9rem;">
                         <input type="checkbox" id="soapEnhanceToggle" onchange="toggleSOAPEnhancement()" style="margin-right: 10px; margin-top: 2px; width: 18px; height: 18px; cursor: pointer; flex-shrink: 0;">
                         <div>
-                            <strong>🤖 Enhanced Mode:</strong> Add clinical analysis & evidence-based recommendations<br>
+                            <strong>🤖 V10 Pure Enhancement:</strong> AI suggestions in separate sections (never mixed with your notes)<br>
                             <span style="font-size: 0.75rem; color: #666; font-style: italic;">
-                                Unchecked = Expand only (safer) | Checked = Expand + Clinical Analysis
+                                ✅ Unchecked = Expand only | ✅ Checked = Expand + AI suggestions (fully separated)
                             </span>
                         </div>
                     </label>
 
-                    <div id="enhanceWarning" style="display: none; margin-top: 8px; padding: 8px; background: #FFF3CD; border-radius: 4px; font-size: 0.75rem;">
-                        💡 <strong>Tip:</strong> Select a pathology and generate briefing for best enhanced analysis
+                    <div id="enhanceWarning" style="display: none; margin-top: 8px; padding: 8px; background: #E3F2FD; border-radius: 4px; font-size: 0.75rem;">
+                        ℹ️ <strong>V10 Note:</strong> SOAP expand mode only uses information from your notes - briefing is NOT used
                     </div>
                 </div>
 
@@ -2163,10 +2162,16 @@ if (typeof module !== 'undefined' && module.exports) {
             console.error('🚨 Unhandled Promise Rejection:', e.reason);
         });
 
-        console.log('🚀 NeuroScribe V9 FIREWALL - Absolute Briefing Separation + BLACKLIST Filter + Enhanced Anti-Hallucination');
+        console.log('🚀 NeuroScribe V10 PURE MODE - Zero Auto-Briefing + Pure SOAP Expand + Complete AI Separation');
+        console.log('📋 V10 KEY FEATURES:');
+        console.log('  ✅ Briefing disabled by default (manual activation only)');
+        console.log('  ✅ SOAP expand mode 100% pure (no external knowledge injection)');
+        console.log('  ✅ AI enhancements always in separate marked sections');
+        console.log('  ✅ Medication blacklist for DOAP/ULTRATHINK');
+        console.log('  ✅ Complete user control over when external knowledge is used');
         console.log('📅 Loading at:', new Date().toLocaleString());
-        console.log('🔧 V9 Features: Absolute Firewall | Briefing BLACKLIST Constraints | Post-Generation Filter | Preventive Red Flag Detection | 3-Step Verification | Enhanced Prompts');
-        console.log('🛡️ Protection Layers: 8 comprehensive fixes to prevent briefing contamination and psychiatric term fabrication');
+        console.log('🔧 V10 Architecture: Pure Clinical Data | Manual Briefing Control | SOAP Purity | Medication Blacklist | Enhanced Transparency');
+        console.log('🛡️ Protection Layers: 8-layer FIREWALL + 5 V10 purity enhancements for absolute clinical documentation integrity');
 
         // ============================================================
         // GLOBAL VARIABLES
@@ -2299,7 +2304,7 @@ if (typeof module !== 'undefined' && module.exports) {
         // Auto Deep Search Activation Variables (V8 Enhancement)
         let reasonForConsult = '';              // User-provided or AI-extracted chief complaint
         let reasonSource = null;                // 'manual' | 'extracted' | null - tracks how reason was obtained
-        let autoDeepSearchEnabled = true;       // User preference toggle for auto-activation
+        let autoDeepSearchEnabled = false;      // V9.1: User preference toggle - DISABLED by default (only generate briefing on explicit request)
         let autoDeepSearchTriggered = false;    // Prevents duplicate auto-activation in same session
         let reasonExtractionAttempted = false;  // Tracks if AI extraction was already attempted
 
@@ -8414,12 +8419,21 @@ Make this actionable and ready to use during the patient consultation. Use check
             // V8 MITIGATION: Post-generation BLACKLIST filter (safety net)
             function filterBlacklistTerms(generatedText, sourceText) {
                 const blacklistTerms = [
+                    // Psychiatric terms
                     'suicidal ideation', 'suicide', 'suicidal thoughts', 'suicidal',
                     'depression', 'depressive', 'depressed',
                     'mental health concerns', 'mental health', 'psychiatric symptoms',
                     'psychological distress', 'anxiety disorder', 'psychosis',
                     'mood disorder', 'bipolar', 'schizophrenia',
-                    'substance abuse', 'drug-seeking', 'opioid dependency'
+                    'substance abuse', 'drug-seeking', 'opioid dependency',
+                    // Medications (commonly hallucinated)
+                    'propranolol', 'beta-blocker', 'beta blocker',
+                    'warfarin', 'anticoagulant', 'anticoagulation',
+                    'clopidogrel', 'plavix',
+                    'apixaban', 'eliquis',
+                    'lisinopril', 'ace inhibitor',
+                    'metformin', 'insulin',
+                    'sertraline', 'zoloft', 'antidepressant'
                 ];
 
                 const sourceLower = sourceText.toLowerCase();
@@ -8601,11 +8615,9 @@ Make this actionable and ready to use during the patient consultation. Use check
                     // Trigger deep briefing generation
                     await generateDeepBriefing();
 
-                    // Auto-enable enhancement mode after successful briefing
-                    transcriptEnhanceMode = true;
+                    // V10: Make enhancement toggle available (but don't auto-enable - user must choose)
                     const enhanceToggle = document.getElementById('transcriptEnhanceToggle');
                     if (enhanceToggle) {
-                        enhanceToggle.checked = true;
                         enhanceToggle.disabled = false;
                     }
 
@@ -8617,6 +8629,7 @@ Make this actionable and ready to use during the patient consultation. Use check
 
                     console.log('✅ AUTO-ACTIVATION COMPLETE');
                     console.log('  → Briefing generated successfully');
+                    console.log('  → Enhancement toggle now available (user must enable manually)');
                     console.log('  → Enhancement mode enabled');
                     console.log('  → Proceeding with expert analysis...');
 
@@ -9541,7 +9554,19 @@ ${transcript}`;
                 currentNoteVersions.status.standard = 'generating';
                 updateCompressionStatusBadges();
                 try {
-                    const standardSummary = await generateAttendingSummary(generatedText);
+                    let standardSummary = await generateAttendingSummary(generatedText);
+
+                    // V9 FIREWALL: Apply BLACKLIST filter to Standard DOAP
+                    console.log('🛡️ Applying BLACKLIST filter to Standard DOAP...');
+                    const standardFilterResult = filterBlacklistTerms(standardSummary || '', inputMode === 'soap' ? soapText : transcript);
+                    if (standardFilterResult.hadFabrications) {
+                        console.error(`🚨 DOAP BLACKLIST FILTER: Removed ${standardFilterResult.sentencesRemoved} fabricated sentences from Standard DOAP`);
+                        console.error(`   Terms: ${standardFilterResult.termsRemoved.join(', ')}`);
+                        standardSummary = standardFilterResult.filtered;
+                    } else {
+                        console.log('✅ DOAP BLACKLIST filter: No fabrications detected in Standard DOAP');
+                    }
+
                     currentNoteVersions.standard = standardSummary || '';
                     currentNoteVersions.status.standard = 'ready';
                     updateCompressionStatusBadges();
@@ -9557,7 +9582,19 @@ ${transcript}`;
                 currentNoteVersions.status.ultra = 'generating';
                 updateCompressionStatusBadges();
                 try {
-                    const ultraSummary = await generateUltraAttendingSummary(generatedText);
+                    let ultraSummary = await generateUltraAttendingSummary(generatedText);
+
+                    // V9 FIREWALL: Apply BLACKLIST filter to ULTRATHINK
+                    console.log('🛡️ Applying BLACKLIST filter to ULTRATHINK...');
+                    const ultraFilterResult = filterBlacklistTerms(ultraSummary || '', inputMode === 'soap' ? soapText : transcript);
+                    if (ultraFilterResult.hadFabrications) {
+                        console.error(`🚨 ULTRATHINK BLACKLIST FILTER: Removed ${ultraFilterResult.sentencesRemoved} fabricated sentences from ULTRATHINK`);
+                        console.error(`   Terms: ${ultraFilterResult.termsRemoved.join(', ')}`);
+                        ultraSummary = ultraFilterResult.filtered;
+                    } else {
+                        console.log('✅ ULTRATHINK BLACKLIST filter: No fabrications detected');
+                    }
+
                     currentNoteVersions.ultra = ultraSummary || '';
                     currentNoteVersions.status.ultra = 'ready';
                     updateCompressionStatusBadges();
@@ -9850,17 +9887,6 @@ MARKER RULES:
 4. **Category**: subjective, objective, assessment, plan
 5. **depends-on**: Comma-separated parent IDs if suggestion builds on others (empty string if independent)
 6. **DO NOT wrap** 📝 DOCUMENTED sections - only AI additions
-
-${hasBriefing ?
-`=== PRE-CONSULTATION BRIEFING ===
-${generatedBriefing}
-
-Use this briefing to inform your expert analysis. Check for:
-- Completeness of history/exam per briefing checklist
-- Red flags identified or ruled out
-- Evidence-based workup recommendations
-- Pathology-specific management guidelines
-` : ''}
 
 CLINICIAN'S SOAP HEADNOTES:
 
@@ -10204,7 +10230,19 @@ FINAL CHECK:
                 currentNoteVersions.status.standard = 'generating';
                 updateCompressionStatusBadges();
                 try {
-                    const standardSummary = await generateAttendingSummary(generatedText);
+                    let standardSummary = await generateAttendingSummary(generatedText);
+
+                    // V9 FIREWALL: Apply BLACKLIST filter to Standard DOAP
+                    console.log('🛡️ Applying BLACKLIST filter to Standard DOAP...');
+                    const standardFilterResult = filterBlacklistTerms(standardSummary || '', inputMode === 'soap' ? soapText : transcript);
+                    if (standardFilterResult.hadFabrications) {
+                        console.error(`🚨 DOAP BLACKLIST FILTER: Removed ${standardFilterResult.sentencesRemoved} fabricated sentences from Standard DOAP`);
+                        console.error(`   Terms: ${standardFilterResult.termsRemoved.join(', ')}`);
+                        standardSummary = standardFilterResult.filtered;
+                    } else {
+                        console.log('✅ DOAP BLACKLIST filter: No fabrications detected in Standard DOAP');
+                    }
+
                     currentNoteVersions.standard = standardSummary || '';
                     currentNoteVersions.status.standard = 'ready';
                     updateCompressionStatusBadges();
@@ -10220,7 +10258,19 @@ FINAL CHECK:
                 currentNoteVersions.status.ultra = 'generating';
                 updateCompressionStatusBadges();
                 try {
-                    const ultraSummary = await generateUltraAttendingSummary(generatedText);
+                    let ultraSummary = await generateUltraAttendingSummary(generatedText);
+
+                    // V9 FIREWALL: Apply BLACKLIST filter to ULTRATHINK
+                    console.log('🛡️ Applying BLACKLIST filter to ULTRATHINK...');
+                    const ultraFilterResult = filterBlacklistTerms(ultraSummary || '', inputMode === 'soap' ? soapText : transcript);
+                    if (ultraFilterResult.hadFabrications) {
+                        console.error(`🚨 ULTRATHINK BLACKLIST FILTER: Removed ${ultraFilterResult.sentencesRemoved} fabricated sentences from ULTRATHINK`);
+                        console.error(`   Terms: ${ultraFilterResult.termsRemoved.join(', ')}`);
+                        ultraSummary = ultraFilterResult.filtered;
+                    } else {
+                        console.log('✅ ULTRATHINK BLACKLIST filter: No fabrications detected');
+                    }
+
                     currentNoteVersions.ultra = ultraSummary || '';
                     currentNoteVersions.status.ultra = 'ready';
                     updateCompressionStatusBadges();
@@ -10902,23 +10952,24 @@ FINAL CHECK:
 
         /**
          * Toggle SOAP enhancement mode
+         * V10: SOAP enhancement is for format/organization only - does NOT use briefing
          */
         function toggleSOAPEnhancement() {
             soapEnhanceMode = document.getElementById('soapEnhanceToggle').checked;
-            console.log(`🤖 SOAP Enhancement mode: ${soapEnhanceMode ? 'ON (Expand + Analysis)' : 'OFF (Expand Only)'}`);
+
+            if (soapEnhanceMode) {
+                console.log(`🤖 SOAP Enhancement mode: ON (Expand + Format Suggestions)`);
+                console.log(`   ℹ️ V10 PURE MODE: AI suggestions will be in SEPARATE sections`);
+                console.log(`   ℹ️ Briefing is NOT used - only expands what's in your SOAP notes`);
+            } else {
+                console.log(`🤖 SOAP Enhancement mode: OFF (Pure Expand Only)`);
+            }
 
             // Update mode stat display
             document.getElementById('soapMode').textContent = soapEnhanceMode ? 'Enhanced' : 'Expand';
 
-            // Show/hide enhancement warning
-            const hasBriefing = generatedBriefing && generatedBriefing.length > 0;
-            const hasPathology = selectedPathology || customPathology;
-
-            if (soapEnhanceMode && !hasBriefing && !hasPathology) {
-                document.getElementById('enhanceWarning').style.display = 'block';
-            } else {
-                document.getElementById('enhanceWarning').style.display = 'none';
-            }
+            // V10: No longer show briefing warning since SOAP doesn't use briefing anymore
+            document.getElementById('enhanceWarning').style.display = 'none';
         }
 
         /**
